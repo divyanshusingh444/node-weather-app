@@ -10,7 +10,9 @@ const forecast = (latitude, longitude, callback) => {
         } else {
             let currentTemperature = body.current.temperature;
             let apparentTemperature = body.current.feelslike
-            callback(undefined, body.current.weather_descriptions[0] + ". It is currently " + currentTemperature + " degrees out but it feels like its " + apparentTemperature + " degrees")
+            let humidity = body.current.humidity
+            let cloudCover = body.current.cloudcover
+            callback(undefined, body.current.weather_descriptions[0] + ". It is currently " + currentTemperature + " degrees out but it feels like its " + apparentTemperature + " degrees. Humidity is " + humidity + " and cloud cover is " + cloudCover + ".")
         }
     })
 }
