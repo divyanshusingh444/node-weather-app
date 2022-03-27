@@ -7,6 +7,8 @@ const forecast = require('./utils/forecast.js')
 
 
 const app = express()
+const port = process.env.PORT || 3000
+
 
 //define Directory
 const publicDirectory = path.join(__dirname, '../public')
@@ -43,6 +45,7 @@ app.get('/help', (req, res) => {
         name:'Div'
     })
 })
+
 app.get('/weather', (req, res) => {
     if(!req.query.address) {
         return res.send({
@@ -75,12 +78,13 @@ app.get('/help/*', (req, res) => {
         title:'Help Page'
     })
 })
+
 app.get('*', (req, res) => {
     res.render('404', {
         title:'Page'
     })
 })
 
-app.listen(3000, () => {
-    console.log('Started listening on port 3000')
+app.listen(port, () => {
+    console.log('Started listening on port ' + port)
 })
